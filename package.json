@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "build-storybook": "storybook build && gh-pages -d storybook-static",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -17,6 +17,7 @@
     "@mantine/form": "^9.0.2",
     "@mantine/hooks": "^9.0.2",
     "@mantine/notifications": "^9.0.2",
+    "gh-pages": "^6.3.0",
     "next": "16.2.4",
     "next-intl": "^4.9.1",
     "postcss-preset-mantine": "^1.18.0",
