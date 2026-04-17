@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(node -e \"const p = require\\('./node_modules/@mantine/core/package.json'\\); console.log\\('Mantine:', p.version\\)\")",
+      "Bash(node -e \"const p = require\\('./node_modules/storybook/package.json'\\); console.log\\('Storybook:', p.version\\)\")",
+      "Bash(node -e \"const d=require\\('/dev/stdin'\\); console.log\\('exports:', Object.keys\\(d\\).filter\\(k=>['main','module','exports'].includes\\(k\\)\\)\\)\")",
+      "Bash(npm test *)",
+      "Bash(npx tsc *)",
+      "Bash(npm view *)",
+      "Bash(node -e \"const v=require\\('/dev/stdin'\\); const a=JSON.parse\\(v\\); console.log\\(a.filter\\(x=>x.startsWith\\('8.'\\)\\).slice\\(-3\\), a.filter\\(x=>x.startsWith\\('9.'\\)||x.startsWith\\('10.'\\)\\).slice\\(-5\\)\\)\")"
+    ]
+  }
+}
