@@ -2,10 +2,10 @@ import { Button as MantineButton } from '@mantine/core';
 import type { ButtonProps } from '@/components/ui/Button';
 
 const VARIANT_MAP: Record<NonNullable<ButtonProps['variant']>, { variant: string; color?: string }> = {
-  primary:   { variant: 'filled',  color: 'Blue' },
-  secondary: { variant: 'outline', color: 'Blue' },
-  ghost:     { variant: 'subtle',  color: 'Blue' },
-  danger:    { variant: 'filled',  color: 'red' },
+  primary:   { variant: 'filled',  color: 'brand' },
+  secondary: { variant: 'outline', color: 'brand' },
+  ghost:     { variant: 'subtle',  color: 'brand' },
+  danger:    { variant: 'filled',  color: 'error' },
 };
 
 const SIZE_MAP: Record<NonNullable<ButtonProps['size']>, string> = {

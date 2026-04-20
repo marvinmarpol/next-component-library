@@ -1,28 +1,33 @@
-import { createTheme } from '@mantine/core';
-import type { MantineColorsTuple } from '@mantine/core';
-import { colors } from './colors';
-import { typography } from './typography';
-import { spacing } from './spacing';
+import { createTheme } from "@mantine/core";
+import type { MantineColorsTuple } from "@mantine/core";
+import { colors } from "./colors";
+import { typography } from "./typography";
+import { spacing } from "./spacing";
 
-const Blue: MantineColorsTuple = [
-  colors['-blue-50'],
-  colors['-blue-100'],
-  colors['-blue-200'],
-  colors['-blue-300'],
-  colors['-blue-400'],
-  colors['-blue-500'],
-  colors['-blue-600'],
-  colors['-blue-700'],
-  colors['-blue-800'],
-  colors['-blue-900'],
-];
+const MANTINE_SHADES = [
+  50, 100, 200, 300, 400, 500, 600, 700, 800, 900,
+] as const;
+
+function toMantineColors(): Record<string, MantineColorsTuple> {
+  return Object.fromEntries(
+    Object.entries(colors).map(([name, shades]) => [
+      name,
+      MANTINE_SHADES.map(
+        (shade) => (shades as Record<number, string>)[shade] ?? "#000000",
+      ) as unknown as MantineColorsTuple,
+    ]),
+  );
+}
 
 export const Theme = createTheme({
-  colors: { Blue },
-  primaryColor: 'Blue',
+  autoContrast: true,
+  colors: toMantineColors(),
+  primaryColor: "brand",
+  primaryShade: 7,
+  cursorType: "pointer",
   fontFamily: typography.fontFamily,
   fontFamilyMonospace: typography.fontFamilyMono,
-  defaultRadius: 'md',
+  defaultRadius: "md",
   spacing: {
     xs: spacing.xs,
     sm: spacing.sm,
