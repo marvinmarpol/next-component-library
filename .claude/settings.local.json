@@ -9,7 +9,8 @@
       "Bash(npx tsc *)",
       "Bash(npm view *)",
       "Bash(node -e \"const v=require\\('/dev/stdin'\\); const a=JSON.parse\\(v\\); console.log\\(a.filter\\(x=>x.startsWith\\('8.'\\)\\).slice\\(-3\\), a.filter\\(x=>x.startsWith\\('9.'\\)||x.startsWith\\('10.'\\)\\).slice\\(-5\\)\\)\")",
-      "Bash(npm -v)"
+      "Bash(npm -v)",
+      "Bash(npm info *)"
     ]
   }
 }
