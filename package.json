@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run build-storybook && next build",
     "start": "next start",
     "lint": "eslint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build && gh-pages -d storybook-static",
+    "build-storybook": "storybook build && rm -rf public/storybook && mv storybook-static public/storybook",
     "test": "vitest run",
     "test:watch": "vitest"
   },
