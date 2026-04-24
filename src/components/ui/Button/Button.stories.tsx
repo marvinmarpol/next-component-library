@@ -78,3 +78,20 @@ export const Large: Story = {
     isLoading: undefined
   },
 };
+
+export const FullWidth: Story = {
+  args: {
+    variant: 'primary',
+    fullWidth: true,
+    children: 'Full Width Button',
+  },
+};
+
+export const WithHref: Story = {
+  args: {
+    variant: 'secondary',
+    href: 'https://example.com',
+    target: '_blank',
+    children: 'Open Link',
+  },
+};

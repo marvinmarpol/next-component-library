@@ -21,12 +21,25 @@ export function Button({
   leftIcon,
   disabled,
   type = 'button',
+  fullWidth = false,
+  href,
+  target,
   children,
   onClick,
 }: ButtonProps) {
   const { variant: mantineVariant, color } = VARIANT_MAP[variant];
 
+  const linkProps = href
+    ? {
+        component: 'a' as const,
+        href,
+        target,
+        rel: target === '_blank' ? 'noopener noreferrer' : undefined,
+      }
+    : {};
+
   return (
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     <MantineButton
       variant={mantineVariant}
       color={color}
@@ -34,8 +47,10 @@ export function Button({
       loading={isLoading}
       leftSection={leftIcon}
       disabled={disabled}
-      type={type}
+      type={href ? undefined : type}
+      fullWidth={fullWidth}
       onClick={onClick}
+      {...(linkProps as any)}
     >
       {children}
     </MantineButton>

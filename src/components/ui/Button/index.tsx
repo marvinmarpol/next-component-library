@@ -11,6 +11,12 @@ export interface ButtonProps {
   disabled?: boolean;
   /** HTML button type */
   type?: 'button' | 'submit' | 'reset';
+  /** Stretches button to fill container width */
+  fullWidth?: boolean;
+  /** Renders as anchor tag — use for navigation */
+  href?: string;
+  /** Link target; automatically adds rel="noopener noreferrer" when "_blank" */
+  target?: '_blank' | '_self' | '_parent' | '_top';
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }

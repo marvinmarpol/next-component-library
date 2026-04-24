@@ -54,4 +54,25 @@ describe('Button', () => {
     renderWithMantine(<Button size={size}>Button</Button>);
     expect(screen.getByRole('button')).toBeInTheDocument();
   });
+
+  it('renders as full width', () => {
+    renderWithMantine(<Button fullWidth>Full Width</Button>);
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+
+  it('renders as anchor when href is provided', () => {
+    renderWithMantine(<Button href="https://example.com">Link</Button>);
+    const link = screen.getByRole('link', { name: 'Link' });
+    expect(link).toHaveAttribute('href', 'https://example.com');
+  });
+
+  it('adds rel="noopener noreferrer" when target="_blank"', () => {
+    renderWithMantine(
+      <Button href="https://example.com" target="_blank">
+        External
+      </Button>
+    );
+    const link = screen.getByRole('link', { name: 'External' });
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+  });
 });
