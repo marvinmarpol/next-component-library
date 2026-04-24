@@ -40,7 +40,7 @@ const data: User[] = [
 const meta: Meta<typeof Table> = {
   title: 'Composite/Table',
   component: Table,
-  tags: ['autodocs'],
+  
 };
 
 export default meta;

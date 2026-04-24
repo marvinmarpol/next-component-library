@@ -4,7 +4,7 @@ import { Chip } from '@/components/ui/Chip';
 const meta: Meta<typeof Chip> = {
   title: 'UI/Chip',
   component: Chip,
-  tags: ['autodocs'],
+  
   argTypes: {
     variant: { control: 'select', options: ['filled', 'outline', 'light'] },
     size:    { control: 'select', options: ['sm', 'md', 'lg'] },

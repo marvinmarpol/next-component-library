@@ -6,7 +6,7 @@ import { Avatar } from '@/components/ui/Avatar';
 const meta: Meta<typeof HoverCard> = {
   title: 'UI/HoverCard',
   component: HoverCard,
-  tags: ['autodocs'],
+  
   argTypes: {
     position: { control: 'select', options: ['top', 'bottom', 'left', 'right'] },
     shadow:   { control: 'select', options: ['sm', 'md', 'lg'] },

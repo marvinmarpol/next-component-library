@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 const meta: Meta<typeof Header> = {
   title: 'Layout/Header',
   component: Header,
-  tags: ['autodocs'],
+  
   parameters: {
     layout: 'padded',
   },

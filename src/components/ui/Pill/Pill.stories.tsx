@@ -4,7 +4,7 @@ import { Pill } from '@/components/ui/Pill';
 const meta: Meta<typeof Pill> = {
   title: 'UI/Pill',
   component: Pill,
-  tags: ['autodocs'],
+  
   argTypes: {
     size: { control: 'select', options: ['sm', 'md', 'lg'] },
   },

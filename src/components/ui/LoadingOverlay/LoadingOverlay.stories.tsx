@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 const meta: Meta<typeof LoadingOverlay> = {
   title: 'UI/LoadingOverlay',
   component: LoadingOverlay,
-  tags: ['autodocs'],
+  
 };
 
 export default meta;

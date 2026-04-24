@@ -4,7 +4,7 @@ import { Notification } from '@/components/ui/Notification';
 const meta: Meta<typeof Notification> = {
   title: 'UI/Notification',
   component: Notification,
-  tags: ['autodocs'],
+  
   argTypes: {
     severity: { control: 'select', options: ['info', 'success', 'warning', 'danger'] },
   },

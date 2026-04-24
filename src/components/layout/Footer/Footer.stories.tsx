@@ -33,7 +33,7 @@ const linkGroups: FooterLinkGroup[] = [
 const meta: Meta<typeof Footer> = {
   title: 'Layout/Footer',
   component: Footer,
-  tags: ['autodocs'],
+  
   parameters: {
     layout: 'fullscreen',
   },

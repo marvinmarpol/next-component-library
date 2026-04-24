@@ -11,7 +11,7 @@ const TRANSFER_ITEMS = [
 const meta: Meta<typeof Timeline> = {
   title: 'UI/Timeline',
   component: Timeline,
-  tags: ['autodocs'],
+  
   argTypes: {
     color: { control: 'select', options: ['primary', 'success', 'warning', 'danger'] },
   },

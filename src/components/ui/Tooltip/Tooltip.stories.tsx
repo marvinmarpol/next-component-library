@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 const meta: Meta<typeof Tooltip> = {
   title: 'UI/Tooltip',
   component: Tooltip,
-  tags: ['autodocs'],
+  
   argTypes: {
     position: { control: 'select', options: ['top', 'bottom', 'left', 'right'] },
   },

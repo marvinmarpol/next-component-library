@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/Button';
 const meta: Meta<typeof Popover> = {
   title: 'UI/Popover',
   component: Popover,
-  tags: ['autodocs'],
+  
   argTypes: {
     position: { control: 'select', options: ['top', 'bottom', 'left', 'right'] },
     shadow:   { control: 'select', options: ['sm', 'md', 'lg'] },

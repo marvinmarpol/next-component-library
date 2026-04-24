@@ -4,7 +4,7 @@ import { CopyButton } from '@/components/ui/CopyButton';
 const meta: Meta<typeof CopyButton> = {
   title: 'UI/CopyButton',
   component: CopyButton,
-  tags: ['autodocs'],
+  
   argTypes: {
     variant: {
       control: 'select',

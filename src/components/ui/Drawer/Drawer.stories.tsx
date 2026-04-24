@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 const meta: Meta<typeof Drawer> = {
   title: 'UI/Drawer',
   component: Drawer,
-  tags: ['autodocs'],
+  
   argTypes: {
     position: { control: 'select', options: ['left', 'right', 'top', 'bottom'] },
     size:     { control: 'select', options: ['sm', 'md', 'lg', 'xl', 'full'] },

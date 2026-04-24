@@ -1,0 +1,219 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Component Library
+
+A shared design system for all frontend products — web app, internal tools, and marketing pages.
+Built on **Next.js 16**, **Mantine v9**, and **TypeScript**.
+
+---
+
+## Why this exists
+
+Consistency across products is hard when every team picks their own UI library.
+This library solves that by owning the **component API** and the **design tokens**, while delegating rendering to a swappable adapter layer.
+
+You import from here. You never import from Mantine directly.
+
+```ts
+// ✅ Always import from the design system
+import { Button, Modal, Badge } from '@your-org/ui';
+
+// ❌ Never import the underlying library directly
+import { Button } from '@mantine/core';
+```
+
+---
+
+## Architecture: the adapter pattern
+
+Every component is split into two layers.
+
+```
+Consumer code
+     ↓  imports from this library only
+[ Component API ]   ← stable public interface (our props, our types)
+     ↓  internally uses
+[ UI Adapter ]      ← currently Mantine v9
+     ↓  styled with
+[ Design Tokens ]   ← colors, spacing, typography — always ours
+```
+
+**`src/components/ui/Button/index.tsx`** — the public contract:
+
+```tsx
+export interface ButtonProps {
+  variant?: 'primary' | 'secondary' | 'ghost' | 'danger';
+  size?: 'sm' | 'md' | 'lg';
+  isLoading?: boolean;
+  fullWidth?: boolean;
+  href?: string;
+  children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+```
+
+**`src/adapters/mantine/Button.tsx`** — the Mantine implementation:
+
+```tsx
+import { Button as MantineButton } from '@mantine/core';
+import type { ButtonProps } from '@/components/ui/Button';
+
+export function Button({ variant = 'primary', size = 'md', ...props }: ButtonProps) {
+  // maps our props → Mantine props internally
+}
+```
+
+**To switch UI libraries**, change a single line in `src/adapters/index.ts`:
+
+```ts
+// Current:
+export * from './mantine';
+
+// Tomorrow, if needed:
+export * from './shadcn';
+```
+
+All stories and consumer code remain untouched.
+
+---
+
+## Component inventory
+
+### UI (primitives)
+
+| Component | Description |
+|---|---|
+| **Button** | Primary action trigger — variants, sizes, full-width, href |
+| **ActionIcon** | Icon-only button — requires `aria-label` |
+| **CopyButton** | Copies text to clipboard with feedback state |
+| **FileButton** | Triggers a file input picker |
+| **Chip** | Toggle-style selection chip |
+| **Pill** | Read-only tag label with optional remove |
+| **Badge** | Status label — filled, outline, light, dot |
+| **Avatar** | User avatar — image or auto-generated initials |
+| **Indicator** | Dot/count overlay on any element |
+| **Tooltip** | Hover label attached to any element |
+| **Loader** | Spinner — spinner, dots, or bars |
+| **Alert** | Inline feedback banner — info, success, warning, danger |
+| **Notification** | Notification card with severity and close button |
+| **Pagination** | Page navigation control |
+| **Tabs** | Tabbed content panel |
+| **Paper** | Elevated surface / card container |
+| **Modal** | Dialog overlay |
+| **Drawer** | Side-panel overlay |
+| **Popover** | Click-triggered floating panel |
+| **HoverCard** | Hover-triggered floating card |
+| **LoadingOverlay** | Full-area loading mask |
+| **Timeline** | Vertical step/event timeline |
+
+### Composite
+
+| Component | Description |
+|---|---|
+| **Form** | Form wrapper with field layout helpers |
+| **TextInputField** | Labelled text input with error state |
+| **SelectField** | Labelled select with error state |
+| **Table** | Data table with sorting, filtering, pagination |
+
+### Layout
+
+| Component | Description |
+|---|---|
+| **Navbar** | Top navigation bar |
+| **Header** | Page header with title, subtitle, actions |
+| **Footer** | Site footer with link groups |
+
+---
+
+## Design tokens
+
+All colors, spacing, and typography live in `src/tokens/` and are the **single source of truth**.
+Mantine's theme is built from them — nothing is hardcoded.
+
+### Brand colors
+
+| Token | Value | Usage |
+|---|---|---|
+| `brand-500` | `#0057FF` | Primary actions |
+| `brand-700` | `#0041CC` | Hover state |
+| `success-500` | `#00B982` | Positive feedback |
+| `warning-500` | `#F5A623` | Caution |
+| `error-500` | `#E8333A` | Destructive / danger |
+| `gray-50` | `#F4F6FA` | Page background |
+| `gray-500` | `#7A8FA8` | Secondary text |
+
+### Spacing scale
+
+All spacing is a multiple of **4 px**.
+
+| Token | Value |
+|---|---|
+| `xs` | 4 px |
+| `sm` | 8 px |
+| `md` | 16 px |
+| `lg` | 24 px |
+| `xl` | 32 px |
+
+### Typography
+
+Font family: **Plus Jakarta Sans** (headings & body).
+
+| Scale | Size |
+|---|---|
+| `text-xs` | 12 px |
+| `text-sm` | 14 px |
+| `text-base` | 16 px |
+| `text-lg` | 18 px |
+| `text-xl` | 20 px |
+| `text-2xl` | 24 px |
+
+---
+
+## Banking-specific rules
+
+These rules apply to any component that handles financial data:
+
+- **Currency** — always IDR, always formatted with `formatIDR()`. Never format inline.
+- **Account numbers** — always masked: `•••• •••• 1234` via `maskAccountNumber()`.
+- **Balance visibility** — components showing balances must support an `isHidden` prop with an eye toggle.
+- **Loading states** — every data-fetching component needs a `Skeleton`-based loading variant.
+- **Error states** — every form component must support an `errorMessage` prop.
+
+---
+
+## Adding a new component
+
+Follow these steps every time:
+
+1. **Define the interface** in `src/components/ui/{Name}/index.tsx`
+   — no Mantine types in the public API
+2. **Implement the adapter** in `src/adapters/mantine/{Name}.tsx`
+   — map our props to Mantine props here
+3. **Export** from `src/adapters/mantine/index.ts` and `src/components/ui/index.ts`
+4. **Write the story** — import from `@/components/ui/{Name}`, not from the adapter
+5. **Write the tests** — test our behaviour, not Mantine internals
+6. **Run** `pnpm storybook` and `pnpm test` to verify
+
+---
+
+## Project structure
+
+```
+src/
+  components/
+    ui/           ← Primitive components (Button, Modal, Badge…)
+    composite/    ← Composed components (Form, Table…)
+    layout/       ← Layout components (Navbar, Header, Footer)
+  adapters/
+    mantine/      ← Mantine implementations — only place Mantine is imported
+    index.ts      ← Swap the library here (one line)
+  tokens/
+    colors.ts     ← Brand color palette
+    typography.ts ← Font scale
+    spacing.ts    ← Spacing scale
+    theme.ts      ← Mantine theme built from tokens
+  docs/
+    Introduction.mdx
+```

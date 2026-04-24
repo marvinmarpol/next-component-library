@@ -4,7 +4,7 @@ import { Loader } from '@/components/ui/Loader';
 const meta: Meta<typeof Loader> = {
   title: 'UI/Loader',
   component: Loader,
-  tags: ['autodocs'],
+  
   argTypes: {
     variant: { control: 'select', options: ['spinner', 'dots', 'bars'] },
     size:    { control: 'select', options: ['sm', 'md', 'lg'] },

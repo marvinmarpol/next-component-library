@@ -4,7 +4,7 @@ import { ActionIcon } from '@/components/ui/ActionIcon';
 const meta: Meta<typeof ActionIcon> = {
   title: 'UI/ActionIcon',
   component: ActionIcon,
-  tags: ['autodocs'],
+  
   argTypes: {
     variant: { control: 'select', options: ['primary', 'secondary', 'ghost', 'danger'] },
     size:    { control: 'select', options: ['sm', 'md', 'lg'] },

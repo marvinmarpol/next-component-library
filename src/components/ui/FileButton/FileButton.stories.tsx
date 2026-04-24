@@ -4,7 +4,7 @@ import { FileButton } from '@/components/ui/FileButton';
 const meta: Meta<typeof FileButton> = {
   title: 'UI/FileButton',
   component: FileButton,
-  tags: ['autodocs'],
+  
   argTypes: {
     variant: {
       control: 'select',

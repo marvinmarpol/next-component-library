@@ -14,7 +14,7 @@ const navItems: NavbarItem[] = [
 const meta: Meta<typeof Navbar> = {
   title: 'Layout/Navbar',
   component: Navbar,
-  tags: ['autodocs'],
+  
   parameters: {
     layout: 'fullscreen',
   },

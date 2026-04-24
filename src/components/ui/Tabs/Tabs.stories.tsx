@@ -10,7 +10,7 @@ const ITEMS = [
 const meta: Meta<typeof Tabs> = {
   title: 'UI/Tabs',
   component: Tabs,
-  tags: ['autodocs'],
+  
   argTypes: {
     variant:     { control: 'select', options: ['default', 'outline', 'pills'] },
     orientation: { control: 'select', options: ['horizontal', 'vertical'] },

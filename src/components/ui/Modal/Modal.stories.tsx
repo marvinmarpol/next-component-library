@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 const meta: Meta<typeof Modal> = {
   title: 'UI/Modal',
   component: Modal,
-  tags: ['autodocs'],
+  
   argTypes: {
     size: { control: 'select', options: ['sm', 'md', 'lg', 'xl', 'full'] },
   },

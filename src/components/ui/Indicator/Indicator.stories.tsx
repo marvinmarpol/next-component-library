@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/Button';
 const meta: Meta<typeof Indicator> = {
   title: 'UI/Indicator',
   component: Indicator,
-  tags: ['autodocs'],
+  
   argTypes: {
     color:    { control: 'select', options: ['primary', 'success', 'warning', 'danger'] },
     position: { control: 'select', options: ['top-start', 'top-end', 'bottom-start', 'bottom-end'] },

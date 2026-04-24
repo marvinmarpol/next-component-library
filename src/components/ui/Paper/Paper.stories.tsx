@@ -4,7 +4,7 @@ import { Paper } from '@/components/ui/Paper';
 const meta: Meta<typeof Paper> = {
   title: 'UI/Paper',
   component: Paper,
-  tags: ['autodocs'],
+  
   argTypes: {
     shadow:  { control: 'select', options: ['none', 'xs', 'sm', 'md', 'lg', 'xl'] },
     radius:  { control: 'select', options: ['sm', 'md', 'lg'] },
